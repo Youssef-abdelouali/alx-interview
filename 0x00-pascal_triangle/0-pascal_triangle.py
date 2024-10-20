@@ -14,7 +14,7 @@ def pascal_triangle(n):
             le_vel = []
             C_ = 1
             for j in range(1, i + 1):
-                le_vel.append(C)
+                le_vel.append(C_)
                 C_ = C_ * (i - j) // j
-            re_s.append(level)
+            re_s.append(le_vel)
     return re_s

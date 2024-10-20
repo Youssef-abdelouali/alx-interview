@@ -1,35 +1,24 @@
 #!/usr/bin/python3
-'''Coding challenge.
-'''
-
+""" Module for 0-minoperations"""
 
 def minOperations(n):
-    '''Computes the fewest number of operations needed to result
-    in exactly n H characters.
-    '''
-    if not isinstance(n, int):
+    """
+    minOperations
+    Gets fewest # of operations needed to result in exactly n H characters
+    """
+    # all outputs should be at least 2 char: (min, Copy All => Paste)
+    if (n < 2):
         return 0
-    ops_co = 0
-    clipbo = 0
-    done = 1
-    # print('H', end='')
-    while done < n:
-        if clipbo == 0:
-            # init (the first copy all and paste)
-            clipbo = done
-            done += clipbo
-            ops_co += 2
-            # print('-(11)->{}'.format('H' * done), end='')
-        elif n - done > 0 and (n - done) % done == 0:
-            # copy all and paste
-            clipbo = done
-            done += clipbo
-            ops_co += 2
-            # print('-(11)->{}'.format('H' * done), end='')
-        elif clipbo> 0:
-            # paste
-            done += clipbo
-            ops_co += 1
-            # print('-(01)->{}'.format('H' * done), end='')
-    # print('')
-    return ops_co
+    operations, divisor = 0, 2
+    while divisor <= n:
+        # if n evenly divides by divisor
+        if n % divisor == 0:
+            # total even-divisions by divisor = total operations
+            operations += divisor
+            # set n to the remainder
+            n = n / divisor
+            # reduce divisor to find remaining smaller vals that evenly-divide n
+            divisor -= 1
+        # increment divisor until it evenly-divides n
+        divisor += 1
+    return operations

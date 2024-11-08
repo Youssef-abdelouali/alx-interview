@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 """ Module for 0-minoperations"""
 
+
 def minOperations(n):
     """
     minOperations
-    Gets fewest # of operations needed to result in exactly n H characters
+    Gets fewest # of optn needed to result in exactly n H char
     """
     # all outputs should be at least 2 char: (min, Copy All => Paste)
     if (n < 2):
@@ -17,7 +18,7 @@ def minOperations(n):
             operations += divisor
             # set n to the remainder
             n = n / divisor
-            # reduce divisor to find remaining smaller vals that evenly-divide n
+            # reduce divi to find remaining smaller vals that evenly-divide n
             divisor -= 1
         # increment divisor until it evenly-divides n
         divisor += 1
